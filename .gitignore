@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# tool configs
+.claude/
+.playwright-mcp/
+
+# design references
+courses-current.png
+courses-v2.png
+courses-v3.png

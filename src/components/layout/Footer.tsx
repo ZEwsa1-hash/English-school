@@ -4,7 +4,7 @@ const CURRENT_YEAR = new Date().getFullYear()
 
 function InstagramIcon() {
   return (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg width="37" height="37" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect width="44" height="44" rx="12" fill="#111827" />
       <rect x="13" y="13" width="18" height="18" rx="5" stroke="white" strokeWidth="2" />
       <circle cx="22" cy="22" r="4" stroke="white" strokeWidth="2" />
@@ -15,7 +15,7 @@ function InstagramIcon() {
 
 function TelegramIcon() {
   return (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg width="37" height="37" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="22" cy="22" r="22" fill="#111827" />
       <path
         d="M31.5 13.5L10 21.5L18 23.5L20.5 31L24.5 26L29.5 30L31.5 13.5Z"
@@ -53,11 +53,11 @@ export function Footer() {
 
         {/* Bottom row: phone + legal */}
         <div className="mt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <p className="text-3xl md:text-4xl font-black text-black tracking-tight mt-4">
+          <p className="text-2xl md:text-4xl font-black text-black tracking-tight mt-4">
             +375 29 999 99 99
           </p>
 
-          <div className="flex flex-col gap-2 text-gray-700 text-xs font-normal leading-none">
+          <div className="flex flex-col gap-2 text-gray-700 text-[12px] font-normal leading-[100%]">
             <div className="flex flex-row gap-10">
               <a href="#" className="underline hover:text-black transition-colors">
                 Пользовательское соглашение

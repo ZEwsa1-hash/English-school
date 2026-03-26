@@ -18,18 +18,18 @@ export function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-10 px-4 sm:px-8 lg:px-20">
+    <header className="md:fixed md:top-0 md:left-0 md:right-0 md:z-50 pt-[45px] md:pt-10 px-5 sm:px-8 lg:px-20">
       {/* Pill — max 1280px, height 60px, radius 59px, bg #E3E3E3 */}
       <div className="max-w-[1280px] mx-auto">
-        <div className="relative bg-[#E3E3E3] rounded-[59px] h-[60px] flex items-center justify-between pr-1">
+        <div className="relative bg-transparent md:bg-[#E3E3E3] md:rounded-[59px] h-[60px] flex items-center justify-between pr-1">
 
           {/* Logo — flush to left edge of pill, 60×60 */}
           <a href="#" className="shrink-0">
             <Image
               src="/logo.png"
               alt="English School"
-              width={60}
-              height={60}
+              width={44}
+              height={44}
               className="rounded-full"
             />
           </a>

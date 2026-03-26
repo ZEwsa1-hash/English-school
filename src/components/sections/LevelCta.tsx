@@ -32,7 +32,7 @@ export function LevelCta() {
   return (
     <section ref={sectionRef} className="bg-white px-4 py-16 sm:py-24">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
-        <h2 className="text-5xl font-black leading-tight text-gray-900 sm:text-6xl">
+        <h2 className="text-[30px] sm:text-5xl lg:text-6xl font-black text-gray-900" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, lineHeight: '92%', letterSpacing: 0, textAlign: 'center' }}>
           Не знаете какой у вас
           <br />
           уровень{' '}
@@ -40,7 +40,7 @@ export function LevelCta() {
             английского?
             {/* viewBox height=18 gives room for chalk displacement */}
             <svg
-              className="absolute -bottom-3 left-0 w-full"
+              className="absolute -bottom-5 left-0 w-full"
               viewBox="0 0 260 18"
               fill="none"
               aria-hidden="true"
@@ -118,7 +118,7 @@ export function LevelCta() {
           </span>
         </h2>
 
-        <p className="whitespace-nowrap text-sm leading-relaxed text-gray-500">
+        <p className="text-[16px] leading-[100%] text-gray-500 text-center" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
           Мы с радостью вам поможем, пройдите бесплатный тест и узнайте!
         </p>
 

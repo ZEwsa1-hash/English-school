@@ -43,28 +43,43 @@ export function Courses() {
         </h2>
 
         {/* Mobile: single column stack */}
-        <div className="flex flex-col gap-4 md:hidden">
-          <div className="overflow-hidden rounded-2xl">
+        <div className="flex flex-col items-center gap-4 md:hidden">
+          <div className="relative overflow-hidden shrink-0" style={{ width: 350, height: 234, borderRadius: 20 }}>
             <Image
-              src="/frame-7.png"
+              src="/frame-13.png"
               alt="Курсы общего английского"
-              width={600}
-              height={220}
-              className="w-full"
+              fill
+              className="object-cover"
             />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.55) 0%, transparent 50%)' }} />
+            <div className="absolute top-0 left-0 right-0 p-5 flex items-start justify-between">
+              <h3 className="text-white font-bold text-base leading-tight max-w-[200px]">Курсы общего английского</h3>
+              <span className="text-white/80 text-sm shrink-0">5$ занятие</span>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <p className="text-white/90 text-sm leading-snug">Базовое изучение языка: грамматика, словарный запас и разговорная практика для повседневного общения</p>
+            </div>
           </div>
-          <div className="overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden shrink-0" style={{ width: 350, height: 234, borderRadius: 20 }}>
             <Image
-              src="/frame-8.png"
+              src="/frame-14.png"
               alt="Английский для переезда за границу"
-              width={300}
-              height={500}
-              className="w-full"
+              fill
+              className="object-cover"
             />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.55) 0%, transparent 50%)' }} />
+            <div className="absolute top-0 left-0 right-0 p-5 flex items-start justify-between">
+              <h3 className="text-white font-bold text-base leading-tight max-w-[200px]">Английский для переезда за границу</h3>
+              <span className="text-white/80 text-sm shrink-0">5$ занятие</span>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <p className="text-white/90 text-sm leading-snug">Подготовка к жизни за рубежом: общение в бытовых ситуациях, оформление документов, адаптация в новой среде</p>
+            </div>
           </div>
           {SMALL_COURSES.map((course) => (
-            <div key={course.title} className={`${course.bg} min-h-[160px] rounded-2xl p-6`}>
-              <div className="mb-2 flex items-start justify-between gap-2">
+            <div key={course.title} className={`${course.bg} shrink-0 p-6 flex flex-col justify-between`} style={{ width: 350, height: 234, borderRadius: 20 }}>
+              <div className="flex items-start justify-between gap-2">
                 <h3 className="text-base font-bold text-white">{course.title}</h3>
                 <span className="shrink-0 text-sm text-white/80">{course.price}</span>
               </div>
@@ -78,28 +93,44 @@ export function Courses() {
         {/* Col1 row2: children | Col2 row2: work | Col4 row2: travel */}
         <div className="hidden md:grid md:grid-cols-4 md:grid-rows-2 md:gap-4" style={{ gridTemplateRows: '260px 260px' }}>
 
-          {/* Blue wide card — col 1-2, row 1 */}
+          {/* General English wide card — col 1-2, row 1 */}
           <div className="relative col-span-2 row-start-1 overflow-hidden rounded-2xl">
             <Image
-              src="/frame-7.png"
+              src="/frame-13.png"
               alt="Курсы общего английского"
               fill
-              className="object-fill"
+              className="object-cover"
               quality={100}
               sizes="(min-width: 768px) 50vw"
             />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 55%)' }} />
+            <div className="absolute top-0 left-0 right-0 p-5 flex items-start justify-between">
+              <h3 className="text-white font-bold text-base leading-tight max-w-[240px]">Курсы общего английского</h3>
+              <span className="text-white/80 text-sm shrink-0">5$ занятие</span>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <p className="text-white/90 text-sm leading-snug max-w-[360px]">Базовое изучение языка: грамматика, словарный запас и разговорная практика для повседневного общения</p>
+            </div>
           </div>
 
-          {/* Orange tall card — col 3, rows 1-2 */}
+          {/* Relocation tall card — col 3, rows 1-2 */}
           <div className="relative col-start-3 row-span-2 row-start-1 overflow-hidden rounded-2xl">
             <Image
-              src="/frame-8.png"
+              src="/frame-14.png"
               alt="Английский для переезда за границу"
               fill
-              className="object-fill"
+              className="object-cover"
               quality={100}
               sizes="(min-width: 768px) 25vw"
             />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 45%)' }} />
+            <div className="absolute top-0 left-0 right-0 p-5">
+              <h3 className="text-white font-bold text-base leading-tight mb-2">Английский для переезда за границу</h3>
+              <span className="text-white/80 text-sm">5$ занятие</span>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <p className="text-white/90 text-sm leading-snug">Подготовка к жизни за рубежом: общение в бытовых ситуациях, оформление документов, адаптация в новой среде</p>
+            </div>
           </div>
 
           {/* Pink — col 4, row 1 */}

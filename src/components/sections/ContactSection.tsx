@@ -119,23 +119,23 @@ export function ContactSection() {
     <section id="contacts" className="bg-white py-20 px-4">
       <div className="max-w-[800px] mx-auto flex flex-col items-center gap-8">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-black leading-tight">
+          <h2 className="text-[30px] md:text-5xl font-black text-black" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, lineHeight: '92%', textAlign: 'center' }}>
             Остались вопросы?
           </h2>
-          <p className="mt-3 text-base text-gray-500">
+          <p className="mt-3 text-[16px] text-gray-500" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, lineHeight: '100%' }}>
             {step === 'question' ? 'Напиши свой вопрос' : 'Укажите как с вами связаться'}
           </p>
         </div>
 
         {/* Contact method selector — hidden after step 1 */}
         {step === 'contact' && (
-          <div className="flex items-center gap-3 flex-wrap justify-center">
+          <div className="flex items-center gap-2 justify-center flex-nowrap">
             {CONTACT_METHODS.map(({ id, label }) => (
               <button
                 key={id}
                 type="button"
                 onClick={() => handleMethodChange(id)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium border transition-colors duration-150 ${
+                className={`px-4 py-2.5 text-xs md:text-sm md:px-6 rounded-full font-medium border transition-colors duration-150 ${
                   selected === id
                     ? 'bg-[#2563EB] border-[#2563EB] text-white'
                     : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'

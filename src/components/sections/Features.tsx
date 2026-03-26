@@ -5,6 +5,8 @@ interface FeatureCard {
   title: string
   left: number
   bottom: number
+  mobileImageFit?: 'cover' | 'contain'
+  mobileImagePosition?: string
 }
 
 const CARD_W = 280
@@ -12,34 +14,36 @@ const CARD_H = 327
 const CARD_RADIUS = 40
 
 const FEATURE_CARDS: FeatureCard[] = [
-  { image: '/frame-5.png',  title: 'Онлайн-учебник',       left: 50,  bottom: 154 },
-  { image: '/frame-12.png', title: 'Разговорные клубы',    left: 350, bottom: 83  },
-  { image: '/frame-11.png', title: 'Личный преподаватель', left: 650, bottom: 246 },
-  { image: '/frame-10.png', title: 'Уроки с иностранцами', left: 950, bottom: 154 },
+  { image: '/frame-5.png',  title: 'Онлайн-учебник',       left: 50,  bottom: 80,  mobileImageFit: 'contain', mobileImagePosition: 'right center' },
+  { image: '/frame-12.png', title: 'Разговорные клубы',    left: 350, bottom: 10  },
+  { image: '/frame-11.png', title: 'Личный преподаватель', left: 650, bottom: 170 },
+  { image: '/frame-10.png', title: 'Уроки с иностранцами', left: 950, bottom: 80  },
 ]
 
 export function Features() {
   return (
-    <section className="px-4 sm:px-10 lg:px-20 py-5">
+    <section className="px-[20px] sm:px-10 lg:px-20 py-5">
 
-      {/* Mobile / tablet layout — 2-column grid */}
-      <div className="lg:hidden bg-[#3794FE] rounded-[50px] p-6 sm:p-10">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">
+      {/* Mobile / tablet layout — single column */}
+      <div className="lg:hidden bg-[#3794FE] rounded-[50px] pt-8 pb-10 px-[30px]">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-[60px] text-center" style={{ fontFamily: 'Inter, sans-serif' }}>
           В курсах уже есть<br />всё, что вам нужно
         </h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="flex flex-col items-center gap-[50px]">
           {FEATURE_CARDS.map((card) => (
-            <div key={card.title} className="bg-white rounded-[40px] overflow-hidden">
-              <div className="relative h-[200px]">
+            <div key={card.title} className="bg-white overflow-hidden w-full" style={{ height: CARD_H, borderRadius: CARD_RADIUS }}>
+              <div className="relative w-full h-full">
                 <Image
                   src={card.image}
                   alt={card.title}
                   fill
-                  className="object-cover object-bottom"
-                  sizes="(max-width: 1024px) 50vw"
+                  style={{
+                    objectFit: card.mobileImageFit ?? 'cover',
+                    objectPosition: card.mobileImagePosition ?? 'bottom',
+                  }}
+                  sizes="(max-width: 640px) calc(100vw - 100px), 400px"
                 />
               </div>
-              <p className="text-sm font-medium text-gray-800 p-3 text-center">{card.title}</p>
             </div>
           ))}
         </div>
@@ -87,9 +91,6 @@ export function Features() {
                   style={{ objectFit: 'cover', objectPosition: 'bottom' }}
                   sizes="280px"
                 />
-                <p className="absolute bottom-3 left-0 right-0 text-center text-sm font-medium text-gray-800 px-2">
-                  {card.title}
-                </p>
               </div>
             </div>
           ))}

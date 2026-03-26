@@ -79,7 +79,7 @@ function BenefitBlurSlide({
       }}
     >
       <div
-        className="bg-[#F04E23] text-white px-6 text-center w-full"
+        className="bg-[#F04E23] text-white px-5 text-center w-full"
         style={{
           height: 90,
           borderRadius: 59,
@@ -88,8 +88,8 @@ function BenefitBlurSlide({
           justifyContent: 'center',
           fontFamily: 'Inter, sans-serif',
           fontWeight: 600,
-          fontSize: 20,
-          lineHeight: '100%',
+          fontSize: 15,
+          lineHeight: '120%',
           letterSpacing: 0,
         }}
       >

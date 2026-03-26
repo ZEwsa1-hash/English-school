@@ -6,7 +6,7 @@ export function VideoSection() {
           Как проходят занятия
         </h2>
 
-        <div className="relative w-full max-w-lg mx-auto aspect-video bg-gray-800 rounded-2xl overflow-hidden">
+        <div className="relative mx-auto bg-gray-800 overflow-hidden" style={{ width: 347, height: 216, borderRadius: 18 }}>
           {/* Fake Zoom UI */}
           <div className="absolute inset-0 bg-gradient-to-b from-gray-700 to-gray-900">
             <div className="flex gap-1 p-2">

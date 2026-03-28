@@ -43,8 +43,8 @@ export function Courses() {
         </h2>
 
         {/* Mobile: single column stack */}
-        <div className="flex flex-col items-center gap-4 md:hidden">
-          <div className="relative overflow-hidden shrink-0" style={{ width: 350, height: 234, borderRadius: 20 }}>
+        <div className="flex flex-col items-center gap-4 lg:hidden">
+          <div className="relative overflow-hidden shrink-0 w-full max-w-[380px]" style={{ height: 234, borderRadius: 20 }}>
             <Image
               src="/frame-13.png"
               alt="Курсы общего английского"
@@ -61,7 +61,7 @@ export function Courses() {
               <p className="text-white/90 text-sm leading-snug">Базовое изучение языка: грамматика, словарный запас и разговорная практика для повседневного общения</p>
             </div>
           </div>
-          <div className="relative overflow-hidden shrink-0" style={{ width: 350, height: 234, borderRadius: 20 }}>
+          <div className="relative overflow-hidden shrink-0 w-full max-w-[380px]" style={{ height: 234, borderRadius: 20 }}>
             <Image
               src="/frame-14.png"
               alt="Английский для переезда за границу"
@@ -78,9 +78,9 @@ export function Courses() {
             </div>
           </div>
           {SMALL_COURSES.map((course) => (
-            <div key={course.title} className={`${course.bg} shrink-0 p-6 flex flex-col justify-between`} style={{ width: 350, height: 234, borderRadius: 20 }}>
+            <div key={course.title} className={`${course.bg} shrink-0 w-full max-w-[380px] p-6 flex flex-col justify-between`} style={{ height: 234, borderRadius: 20 }}>
               <div className="flex items-start justify-between gap-2">
-                <h3 className="text-base font-bold text-white">{course.title}</h3>
+                <h3 className="text-base font-bold leading-snug text-white">{course.title}</h3>
                 <span className="shrink-0 text-sm text-white/80">{course.price}</span>
               </div>
               <p className="text-sm leading-relaxed text-white/90">{course.description}</p>
@@ -91,7 +91,7 @@ export function Courses() {
         {/* Desktop: 4-col bento grid, 2 rows */}
         {/* Col1+2 row1: blue landscape | Col3 row1+2: orange portrait | Col4 row1: pink */}
         {/* Col1 row2: children | Col2 row2: work | Col4 row2: travel */}
-        <div className="hidden md:grid md:grid-cols-4 md:grid-rows-2 md:gap-4" style={{ gridTemplateRows: '260px 260px' }}>
+        <div className="hidden lg:grid lg:grid-cols-4 lg:grid-rows-2 lg:gap-4" style={{ gridTemplateRows: '260px 260px' }}>
 
           {/* General English wide card — col 1-2, row 1 */}
           <div className="relative col-span-2 row-start-1 overflow-hidden rounded-2xl">
@@ -136,37 +136,37 @@ export function Courses() {
           {/* Pink — col 4, row 1 */}
           <div className={`${SMALL_COURSES[0].bg} col-start-4 row-start-1 flex flex-col justify-between rounded-2xl p-5`}>
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-[14px] font-medium leading-none text-white">{SMALL_COURSES[0].title}</h3>
-              <span className="shrink-0 text-[14px] font-medium leading-none text-white">{SMALL_COURSES[0].price}</span>
+              <h3 className="text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[0].title}</h3>
+              <span className="shrink-0 text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[0].price}</span>
             </div>
-            <p className="text-[16px] font-medium leading-none text-white">{SMALL_COURSES[0].description}</p>
+            <p className="text-[16px] font-medium leading-snug text-white">{SMALL_COURSES[0].description}</p>
           </div>
 
           {/* Children — col 1, row 2 */}
           <div className={`${SMALL_COURSES[1].bg} col-start-1 row-start-2 flex flex-col justify-between rounded-2xl p-5`}>
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-[14px] font-medium leading-none text-white">{SMALL_COURSES[1].title}</h3>
-              <span className="shrink-0 text-[14px] font-medium leading-none text-white">{SMALL_COURSES[1].price}</span>
+              <h3 className="text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[1].title}</h3>
+              <span className="shrink-0 text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[1].price}</span>
             </div>
-            <p className="text-[16px] font-medium leading-none text-white">{SMALL_COURSES[1].description}</p>
+            <p className="text-[16px] font-medium leading-snug text-white">{SMALL_COURSES[1].description}</p>
           </div>
 
           {/* Work — col 2, row 2 */}
           <div className={`${SMALL_COURSES[2].bg} col-start-2 row-start-2 flex flex-col justify-between rounded-2xl p-5`}>
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-[14px] font-medium leading-none text-white">{SMALL_COURSES[2].title}</h3>
-              <span className="shrink-0 text-[14px] font-medium leading-none text-white">{SMALL_COURSES[2].price}</span>
+              <h3 className="text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[2].title}</h3>
+              <span className="shrink-0 text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[2].price}</span>
             </div>
-            <p className="text-[16px] font-medium leading-none text-white">{SMALL_COURSES[2].description}</p>
+            <p className="text-[16px] font-medium leading-snug text-white">{SMALL_COURSES[2].description}</p>
           </div>
 
           {/* Travel — col 4, row 2 */}
           <div className={`${SMALL_COURSES[3].bg} col-start-4 row-start-2 flex flex-col justify-between rounded-2xl p-5`}>
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-[14px] font-medium leading-none text-white">{SMALL_COURSES[3].title}</h3>
-              <span className="shrink-0 text-[14px] font-medium leading-none text-white">{SMALL_COURSES[3].price}</span>
+              <h3 className="text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[3].title}</h3>
+              <span className="shrink-0 text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[3].price}</span>
             </div>
-            <p className="text-[16px] font-medium leading-none text-white">{SMALL_COURSES[3].description}</p>
+            <p className="text-[16px] font-medium leading-snug text-white">{SMALL_COURSES[3].description}</p>
           </div>
         </div>
       </div>

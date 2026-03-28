@@ -21,10 +21,19 @@ export function Header() {
     <header className="md:fixed md:top-0 md:left-0 md:right-0 md:z-50 pt-[45px] md:pt-10 px-5 sm:px-8 lg:px-20">
       {/* Pill — max 1280px, height 60px, radius 59px, bg #E3E3E3 */}
       <div className="max-w-[1280px] mx-auto">
-        <div className="relative bg-transparent md:bg-[#E3E3E3] md:rounded-[59px] h-[60px] flex items-center justify-between pr-1">
+        <div className="relative bg-white/95 md:bg-[#E3E3E3] rounded-[59px] md:rounded-[59px] h-[60px] flex items-center justify-between pr-1 shadow-sm md:shadow-none">
 
-          {/* Logo — flush to left edge of pill, 60×60 */}
-          <a href="#" className="shrink-0">
+          {/* Logo — full height of pill on desktop */}
+          <a href="#" className="shrink-0 self-stretch hidden md:flex items-center">
+            <Image
+              src="/logo.png"
+              alt="English School"
+              width={60}
+              height={60}
+              className="rounded-full h-full w-auto object-cover"
+            />
+          </a>
+          <a href="#" className="shrink-0 md:hidden">
             <Image
               src="/logo.png"
               alt="English School"

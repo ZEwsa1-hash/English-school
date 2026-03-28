@@ -31,7 +31,7 @@ function ReviewCard({ review }: ReviewCardProps) {
     <div
       className="bg-white p-6 flex flex-col gap-4"
       style={{
-        height: '271px',
+        minHeight: '271px',
         borderRadius: '20px',
         boxShadow: '0px 4px 17px 0px #00000040',
       }}

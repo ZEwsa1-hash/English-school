@@ -79,7 +79,7 @@ function BenefitBlurSlide({
       }}
     >
       <div
-        className="bg-[#F04E23] text-white px-5 text-center w-full"
+        className="bg-[#F04E23] text-white px-5 md:px-8 text-center w-full"
         style={{
           height: 90,
           borderRadius: 59,
@@ -88,7 +88,7 @@ function BenefitBlurSlide({
           justifyContent: 'center',
           fontFamily: 'Inter, sans-serif',
           fontWeight: 600,
-          fontSize: 15,
+          fontSize: 'clamp(15px, 1.4vw, 20px)',
           lineHeight: '120%',
           letterSpacing: 0,
         }}
@@ -126,17 +126,16 @@ function BenefitsMobileCarousel() {
   return (
     <div
       ref={wrapperRef}
-      // 150vh per card → enough scroll space for each phrase to feel unhurried
       style={{ height: `${N * 150}vh`, position: 'relative' }}
     >
       <div
-        className="sticky top-0 flex flex-col justify-center items-center px-5 md:px-20"
+        className="sticky top-0 flex flex-col justify-center items-center px-5 md:px-20 lg:px-32"
         style={{ height: '100vh' }}
       >
-        <h2 className="text-2xl md:text-4xl font-bold text-black text-center w-full" style={{ marginTop: -40 }}>
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black text-center w-full mb-12">
           Благодаря английскому вы...
         </h2>
-        <div style={{ position: 'relative', width: '100%', maxWidth: 694, marginTop: 90 }}>
+        <div style={{ position: 'relative', width: '100%', maxWidth: 860, marginTop: 90 }}>
           {BENEFITS.map((benefit, i) => (
             <BenefitBlurSlide
               key={benefit.id}

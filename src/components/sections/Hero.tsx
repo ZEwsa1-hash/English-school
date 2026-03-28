@@ -19,16 +19,16 @@ export function Hero() {
 
         {/* Left: text */}
         <div className="flex-1 max-w-[738px] flex flex-col items-center lg:items-start" style={{ marginTop: '35px' }}>
-          <h1 className="text-black font-extrabold text-[30px] lg:text-[64px] leading-[100%] lg:leading-tight text-center lg:text-left" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: 0 }}>
+          <h1 className="text-black font-extrabold text-[30px] lg:text-[64px] leading-[100%] lg:leading-tight text-center lg:text-left">
             <span className="block">Онлайн-обучение</span>
             <span className="block">по английскому языку</span>
           </h1>
-          <p className="mt-4 text-zinc-600 text-[16px] lg:text-lg leading-[100%] text-center lg:text-left" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+          <p className="mt-4 text-zinc-600 text-[16px] lg:text-lg leading-[100%] text-center lg:text-left">
             Освоите уникальную методику, которая поможет освоить язык в перерывах между работой и личной жизнью
           </p>
           <a
             href="#courses"
-            className="mt-10 inline-flex items-center justify-center bg-[#E85623] text-white font-semibold text-base rounded-[59px] hover:bg-[#d04e1f] transition-colors duration-200 w-[342px] lg:w-[187px]"
+            className="mt-10 inline-flex items-center justify-center bg-[#E85623] text-white font-semibold text-base rounded-[59px] hover:bg-[#d04e1f] transition-colors duration-200 w-full max-w-[342px] lg:w-[187px]"
             style={{ height: '60px' }}
           >
             Узнать цены
@@ -36,7 +36,7 @@ export function Hero() {
         </div>
 
         {/* Right: N + ice cube (horizontal), dot below-left of ice cube */}
-        <div className="hidden lg:flex flex-1 items-center justify-center" style={{ paddingLeft: '50px', marginTop: '-100px' }}>
+        <div className="hidden md:flex flex-1 items-center justify-center md:max-w-[300px] lg:max-w-none" style={{ paddingLeft: '20px', marginTop: '-60px' }}>
           <div className="relative flex items-center">
             {/* N */}
             <span

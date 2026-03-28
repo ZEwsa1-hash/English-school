@@ -1,0 +1,14 @@
+.next
+node_modules
+.git
+.gitignore
+README.md
+Dockerfile
+.dockerignore
+.env*
+!.env.example
+.claude
+.playwright-mcp
+npm-debug.log*
+*.tsbuildinfo
+coverage

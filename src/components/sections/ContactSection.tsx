@@ -61,6 +61,7 @@ export function ContactSection() {
   const [showError, setShowError] = useState(false)
   const [step, setStep] = useState<Step>('contact')
   const [submitError, setSubmitError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleMethodChange = (method: ContactMethod) => {
     setSelected(method)
@@ -91,24 +92,29 @@ export function ContactSection() {
   const handleQuestionSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitError(null)
+    setIsSubmitting(true)
 
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contact, method: selected, question }),
-    })
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contact, method: selected, question }),
+      })
 
-    if (res.status === 429) {
-      setSubmitError('Слишком много заявок. Попробуйте через час.')
-      return
+      if (res.status === 429) {
+        setSubmitError('Слишком много заявок. Попробуйте через час.')
+        return
+      }
+
+      if (!res.ok) {
+        setSubmitError('Что-то пошло не так. Попробуйте ещё раз.')
+        return
+      }
+
+      setStep('done')
+    } finally {
+      setIsSubmitting(false)
     }
-
-    if (!res.ok) {
-      setSubmitError('Что-то пошло не так. Попробуйте ещё раз.')
-      return
-    }
-
-    setStep('done')
   }
 
   const canSubmitContact = isValid(contact, selected)
@@ -116,20 +122,20 @@ export function ContactSection() {
   const errorMessage = showError ? getPhoneError(contact, selected) : null
 
   return (
-    <section id="contacts" className="bg-white py-20 px-4">
+    <section id="contacts" className="bg-white py-20 px-4 sm:px-8 lg:px-20">
       <div className="max-w-[800px] mx-auto flex flex-col items-center gap-8">
         <div className="text-center">
-          <h2 className="text-[30px] md:text-5xl font-black text-black" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, lineHeight: '92%', textAlign: 'center' }}>
+          <h2 className="text-[30px] md:text-5xl font-extrabold leading-[92%] text-center text-black">
             Остались вопросы?
           </h2>
-          <p className="mt-3 text-[16px] text-gray-500" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, lineHeight: '100%' }}>
+          <p className="mt-3 text-[16px] text-gray-500 font-normal leading-none">
             {step === 'question' ? 'Напиши свой вопрос' : 'Укажите как с вами связаться'}
           </p>
         </div>
 
         {/* Contact method selector — hidden after step 1 */}
         {step === 'contact' && (
-          <div className="flex items-center gap-2 justify-center flex-nowrap">
+          <div className="flex items-center gap-2 justify-center flex-wrap">
             {CONTACT_METHODS.map(({ id, label }) => (
               <button
                 key={id}
@@ -151,7 +157,7 @@ export function ContactSection() {
         {step === 'contact' && (
           <form onSubmit={handleContactSubmit} className="w-full flex flex-col gap-2">
             <div
-              className="flex items-center w-full bg-white rounded-[40px] px-5 py-3"
+              className="flex items-center w-full bg-white rounded-[40px] px-3 sm:px-5 py-3"
               style={{ boxShadow: 'inset 0 4px 11.9px 0 rgba(0,0,0,0.25)' }}
             >
               <input
@@ -163,7 +169,7 @@ export function ContactSection() {
               />
               <button
                 type="submit"
-                className={`ml-4 shrink-0 text-white text-sm font-semibold rounded-full px-7 py-3 transition-colors duration-150 ${
+                className={`ml-2 sm:ml-4 shrink-0 text-white text-xs sm:text-sm font-semibold rounded-full px-4 sm:px-7 py-3 transition-colors duration-150 ${
                   canSubmitContact ? 'bg-[#2563EB] hover:bg-blue-700' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               >
@@ -183,7 +189,7 @@ export function ContactSection() {
         {step === 'question' && (
           <form onSubmit={handleQuestionSubmit} className="w-full flex flex-col gap-2">
             <div
-              className="flex items-center w-full bg-white rounded-[40px] px-5 py-3"
+              className="flex items-center w-full bg-white rounded-[40px] px-3 sm:px-5 py-3"
               style={{ boxShadow: 'inset 0 4px 11.9px 0 rgba(0,0,0,0.25)' }}
             >
               <input
@@ -196,11 +202,12 @@ export function ContactSection() {
               />
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className={`ml-4 shrink-0 text-white text-sm font-semibold rounded-full px-7 py-3 transition-colors duration-150 ${
-                  canSubmitQuestion ? 'bg-[#2563EB] hover:bg-blue-700' : 'bg-gray-300 hover:bg-gray-400'
+                  canSubmitQuestion && !isSubmitting ? 'bg-[#2563EB] hover:bg-blue-700' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               >
-                Отправить
+                {isSubmitting ? 'Отправка...' : 'Отправить'}
               </button>
             </div>
 

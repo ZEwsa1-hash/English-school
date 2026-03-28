@@ -53,7 +53,13 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  const body = await req.json()
+  let body: Record<string, unknown>
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Неверный формат данных' }, { status: 400 })
+  }
+
   const { contact, method, question } = body
 
   if (!contact || !method || !question) {

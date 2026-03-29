@@ -15,7 +15,7 @@ export function Hero() {
       />
 
       {/* Same structure as header: px-20 on outer, max-w inside */}
-      <div className="relative z-10 max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 pt-[100px] lg:pt-[140px] pb-16 lg:pb-20">
+      <div className="relative z-10 max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 pt-[110px] lg:pt-[150px] pb-16 lg:pb-20">
 
         {/* Left: text */}
         <div className="flex-1 max-w-[738px] flex flex-col items-center lg:items-start" style={{ marginTop: '35px' }}>

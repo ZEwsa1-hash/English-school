@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 interface Review {
   id: number
@@ -62,9 +62,32 @@ function ReviewCard({ review }: ReviewCardProps) {
 
 export function Reviews() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const pointerStartX = useRef<number | null>(null)
 
   // On desktop show all 3 at once (single "page"), on mobile paginate one by one
   const totalMobilePages = REVIEWS.length
+
+  function handlePointerDown(e: React.PointerEvent) {
+    pointerStartX.current = e.clientX
+  }
+
+  function handlePointerUp(e: React.PointerEvent) {
+    if (pointerStartX.current === null) return
+    const delta = e.clientX - pointerStartX.current
+    pointerStartX.current = null
+    if (Math.abs(delta) < 30) return
+    if (delta > 0) {
+      // Swipe right → previous
+      setActiveIndex((prev) => (prev - 1 + totalMobilePages) % totalMobilePages)
+    } else {
+      // Swipe left → next
+      setActiveIndex((prev) => (prev + 1) % totalMobilePages)
+    }
+  }
+
+  function handlePointerCancel() {
+    pointerStartX.current = null
+  }
 
   return (
     <section id="reviews" className="w-full bg-gray-50 py-20 px-4 sm:px-10 lg:px-20">
@@ -81,7 +104,13 @@ export function Reviews() {
         </div>
 
         {/* Mobile / tablet: single card carousel */}
-        <div className="lg:hidden">
+        <div
+          className="lg:hidden"
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerCancel}
+          style={{ touchAction: 'pan-y', userSelect: 'none' }}
+        >
           <ReviewCard review={REVIEWS[activeIndex]} />
 
           {/* Pagination dots */}
@@ -96,24 +125,6 @@ export function Reviews() {
                 }`}
               />
             ))}
-          </div>
-
-          {/* Prev / Next arrows */}
-          <div className="flex justify-center gap-4 mt-4">
-            <button
-              onClick={() => setActiveIndex((prev) => (prev - 1 + totalMobilePages) % totalMobilePages)}
-              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors"
-              aria-label="Предыдущий отзыв"
-            >
-              ‹
-            </button>
-            <button
-              onClick={() => setActiveIndex((prev) => (prev + 1) % totalMobilePages)}
-              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors"
-              aria-label="Следующий отзыв"
-            >
-              ›
-            </button>
           </div>
         </div>
 

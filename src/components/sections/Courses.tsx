@@ -15,7 +15,7 @@ const SMALL_COURSES: SmallCourse[] = [
     bg: 'bg-[#FAAACD]',
   },
   {
-    title: 'Английский для детей (7–15 лет)',
+    title: 'Английский для детей\n(7–15 лет)',
     price: '5$ занятие',
     description: 'Интерактивное обучение через игры и задания, развитие разговорных навыков и интереса к языку',
     bg: 'bg-[#FF865C]',
@@ -80,7 +80,7 @@ export function Courses() {
           {SMALL_COURSES.map((course) => (
             <div key={course.title} className={`${course.bg} shrink-0 w-full max-w-[380px] p-6 flex flex-col justify-between`} style={{ height: 234, borderRadius: 20 }}>
               <div className="flex items-start justify-between gap-2">
-                <h3 className="text-base font-bold leading-snug text-white">{course.title}</h3>
+                <h3 className="text-base font-bold leading-snug text-white whitespace-pre-wrap">{course.title}</h3>
                 <span className="shrink-0 text-sm text-white/80">{course.price}</span>
               </div>
               <p className="text-sm leading-relaxed text-white/90">{course.description}</p>
@@ -136,7 +136,7 @@ export function Courses() {
           {/* Pink — col 4, row 1 */}
           <div className={`${SMALL_COURSES[0].bg} col-start-4 row-start-1 flex flex-col justify-between rounded-2xl p-5`}>
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[0].title}</h3>
+              <h3 className="text-[14px] font-medium leading-snug text-white whitespace-pre-wrap">{SMALL_COURSES[0].title}</h3>
               <span className="shrink-0 text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[0].price}</span>
             </div>
             <p className="text-[16px] font-medium leading-snug text-white">{SMALL_COURSES[0].description}</p>
@@ -145,7 +145,7 @@ export function Courses() {
           {/* Children — col 1, row 2 */}
           <div className={`${SMALL_COURSES[1].bg} col-start-1 row-start-2 flex flex-col justify-between rounded-2xl p-5`}>
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[1].title}</h3>
+              <h3 className="text-[14px] font-medium leading-snug text-white whitespace-pre-wrap">{SMALL_COURSES[1].title}</h3>
               <span className="shrink-0 text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[1].price}</span>
             </div>
             <p className="text-[16px] font-medium leading-snug text-white">{SMALL_COURSES[1].description}</p>
@@ -154,7 +154,7 @@ export function Courses() {
           {/* Work — col 2, row 2 */}
           <div className={`${SMALL_COURSES[2].bg} col-start-2 row-start-2 flex flex-col justify-between rounded-2xl p-5`}>
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[2].title}</h3>
+              <h3 className="text-[14px] font-medium leading-snug text-white whitespace-pre-wrap">{SMALL_COURSES[2].title}</h3>
               <span className="shrink-0 text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[2].price}</span>
             </div>
             <p className="text-[16px] font-medium leading-snug text-white">{SMALL_COURSES[2].description}</p>
@@ -163,7 +163,7 @@ export function Courses() {
           {/* Travel — col 4, row 2 */}
           <div className={`${SMALL_COURSES[3].bg} col-start-4 row-start-2 flex flex-col justify-between rounded-2xl p-5`}>
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[3].title}</h3>
+              <h3 className="text-[14px] font-medium leading-snug text-white whitespace-pre-wrap">{SMALL_COURSES[3].title}</h3>
               <span className="shrink-0 text-[14px] font-medium leading-snug text-white">{SMALL_COURSES[3].price}</span>
             </div>
             <p className="text-[16px] font-medium leading-snug text-white">{SMALL_COURSES[3].description}</p>

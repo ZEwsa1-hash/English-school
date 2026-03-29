@@ -66,7 +66,7 @@ export function Footer() {
                 Политика конфиденциальности
               </a>
             </div>
-            <p>
+            <p className="mt-[10px] md:mt-0">
               Образовательные услуги оказываются тут должна быть ваша инфа на основании{' '}
               <a href="#" className="underline">ваша инфа</a>
             </p>

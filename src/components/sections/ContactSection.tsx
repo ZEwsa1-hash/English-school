@@ -165,7 +165,7 @@ export function ContactSection() {
                 value={contact}
                 onChange={handleContactChange}
                 placeholder={getPlaceholder(selected)}
-                className="flex-1 bg-transparent outline-none text-sm text-gray-700 placeholder:text-gray-400 py-1"
+                className="flex-1 bg-transparent outline-none text-xs text-gray-700 placeholder:text-gray-400 py-1"
               />
               <button
                 type="submit"
@@ -198,7 +198,7 @@ export function ContactSection() {
                 onChange={(e) => { setQuestion(e.target.value); setSubmitError(null) }}
                 placeholder="Напишите свой вопрос..."
                 autoFocus
-                className="flex-1 bg-transparent outline-none text-sm text-gray-700 placeholder:text-gray-400 py-1"
+                className="flex-1 bg-transparent outline-none text-xs text-gray-700 placeholder:text-gray-400 py-1"
               />
               <button
                 type="submit"

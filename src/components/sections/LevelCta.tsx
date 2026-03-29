@@ -30,7 +30,7 @@ export function LevelCta() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="bg-white px-4 py-16 sm:py-24">
+    <section ref={sectionRef} className="bg-white px-4 py-16 sm:py-24 mt-[50px] sm:mt-0">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
         <h2 className="text-[30px] sm:text-5xl lg:text-6xl font-black text-gray-900" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, lineHeight: '92%', letterSpacing: 0, textAlign: 'center' }}>
           Не знаете какой у вас

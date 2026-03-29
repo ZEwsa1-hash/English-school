@@ -11,9 +11,9 @@ const CARD_H = 327
 
 const FEATURE_CARDS: FeatureCard[] = [
   { image: '/frame-5.png',  title: 'Онлайн-учебник',       mobileImageFit: 'contain', mobileImagePosition: 'right center' },
-  { image: '/frame-12.png', title: 'Разговорные клубы' },
-  { image: '/frame-11.png', title: 'Личный преподаватель' },
-  { image: '/frame-10.png', title: 'Уроки с иностранцами' },
+  { image: '/frame-12.png', title: 'Разговорные клубы',    mobileImagePosition: 'center bottom' },
+  { image: '/frame-11.png', title: 'Личный преподаватель', mobileImagePosition: 'center bottom' },
+  { image: '/frame-10.png', title: 'Уроки с иностранцами', mobileImagePosition: 'center bottom' },
 ]
 
 export function Features() {
@@ -36,7 +36,7 @@ export function Features() {
                 src={card.image}
                 alt={card.title}
                 fill
-                style={{ objectFit: 'contain', objectPosition: 'center center' }}
+                style={{ objectFit: card.mobileImageFit ?? 'cover', objectPosition: card.mobileImagePosition ?? 'center center' }}
                 sizes="(max-width: 640px) calc(100vw - 100px), 400px"
               />
             </div>

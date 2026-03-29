@@ -1,7 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef, useEffect } from 'react'
+import { motion, useTransform, useMotionValue } from 'framer-motion'
 
 interface Benefit {
   id: number
@@ -16,10 +16,8 @@ const BENEFITS: Benefit[] = [
 ]
 
 const BLUR_MAX_PX = 20
-// Card is visible when |diff| < threshold; fully gone when |diff| >= threshold
 const VISIBILITY_THRESHOLD = 0.45
 
-// Cards 1 & 3 (index 0 & 2) → left, cards 2 & 4 (index 1 & 3) → right
 function BenefitBlurSlide({
   index,
   floatIndex,
@@ -32,7 +30,6 @@ function BenefitBlurSlide({
   const FLY_UP_PX = 180
   const isLeft = index % 2 === 0
 
-  // diff > 0 → card is below (upcoming), diff < 0 → card is above (passed)
   const diff = useTransform(floatIndex, (latest: number) => index - latest)
 
   const blur = useTransform(diff, (d: number) => {
@@ -53,7 +50,6 @@ function BenefitBlurSlide({
     return 1 - (abs / VISIBILITY_THRESHOLD) * 0.12
   })
 
-  // Passed cards fly up, upcoming cards wait below
   const y = useTransform(diff, (d: number) => {
     if (d <= -VISIBILITY_THRESHOLD) return -FLY_UP_PX
     if (d >= VISIBILITY_THRESHOLD) return FLY_UP_PX * 0.5
@@ -76,19 +72,20 @@ function BenefitBlurSlide({
         alignItems: 'center',
         justifyContent: isLeft ? 'flex-start' : 'flex-end',
         willChange: 'filter, opacity, transform',
+        pointerEvents: 'none',
       }}
     >
       <div
         className="bg-[#F04E23] text-white px-5 md:px-8 text-center w-full"
         style={{
-          height: 90,
+          height: 68,
           borderRadius: 59,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           fontFamily: 'Inter, sans-serif',
           fontWeight: 600,
-          fontSize: 'clamp(15px, 1.4vw, 20px)',
+          fontSize: 'clamp(13px, 1.1vw, 16px)',
           lineHeight: '120%',
           letterSpacing: 0,
         }}
@@ -101,24 +98,30 @@ function BenefitBlurSlide({
 
 function BenefitsMobileCarousel() {
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: wrapperRef,
-    offset: ['start start', 'end end'],
-  })
 
-  // Stepped keyframes — floatIndex ≈ i means card i is fully visible.
-  // Pattern per card: enter from blur → hold → exit into blur → gap (both blurred) → next enters.
-  // 13 equal scroll segments for 4 cards:
-  //   seg 0: card 0 enters   (-0.6 → 0)
-  //   seg 1: card 0 holds    (0)
-  //   seg 2: card 0 exits    (0 → 0.5) ← both blurred when floatIndex 0.45–0.55
-  //   seg 3: card 1 enters   (0.5 → 1)
-  //   seg 4: card 1 holds    (1)
-  //   seg 5: card 1 exits    (1 → 1.5)
-  //   ... and so on
+  // Use a plain MotionValue updated by a native scroll listener.
+  // Framer Motion's useScroll({ target }) is unreliable on iOS Safari —
+  // native scroll events with { passive: true } work everywhere.
+  const scrollProgress = useMotionValue(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = wrapperRef.current
+      if (!el) return
+      const scrolled = -el.getBoundingClientRect().top
+      const scrollable = el.offsetHeight - window.innerHeight
+      if (scrollable <= 0) return
+      scrollProgress.set(Math.min(1, Math.max(0, scrolled / scrollable)))
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [scrollProgress])
+
   const N = BENEFITS.length
   const floatIndex = useTransform(
-    scrollYProgress,
+    scrollProgress,
     [0, 0.077, 0.154, 0.231, 0.308, 0.385, 0.462, 0.538, 0.615, 0.692, 0.769, 0.846, 1.0],
     [-0.6, 0,   0,    0.5,  1,    1,     1.5,  2,     2,    2.5,  3,    3,    N - 1 + 0.6]
   )

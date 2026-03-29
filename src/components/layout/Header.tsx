@@ -18,10 +18,10 @@ export function Header() {
   }
 
   return (
-    <header className="md:fixed md:top-0 md:left-0 md:right-0 md:z-50 pt-[45px] md:pt-10 px-5 sm:px-8 lg:px-20">
-      {/* Pill — max 1280px, height 60px, radius 59px, bg #E3E3E3 */}
+    <header className="md:fixed md:top-0 md:left-0 md:right-0 md:z-50 pt-[28px] md:pt-[22px] px-5 sm:px-8 lg:px-20">
+      {/* Pill — max 1280px, height 48px, radius 59px, bg #E3E3E3 */}
       <div className="max-w-[1280px] mx-auto">
-        <div className="relative bg-white/95 md:bg-[#E3E3E3] rounded-[59px] md:rounded-[59px] h-[60px] flex items-center justify-between pr-1 shadow-sm md:shadow-none">
+        <div className="relative bg-white/95 md:bg-[#E3E3E3] rounded-[59px] md:rounded-[59px] h-[48px] flex items-center justify-between pr-1 shadow-sm md:shadow-none">
 
           {/* Logo — full height of pill on desktop */}
           <a href="#" className="shrink-0 self-stretch hidden md:flex items-center">
@@ -37,9 +37,9 @@ export function Header() {
             <Image
               src="/logo.png"
               alt="English School"
-              width={44}
-              height={44}
-              className="rounded-full"
+              width={48}
+              height={48}
+              className="rounded-full object-cover"
             />
           </a>
 
@@ -50,7 +50,7 @@ export function Header() {
           >
             {NAV_LINKS.map(({ label, href }) => (
               <a
-                key={href}
+                key={label}
                 href={href}
                 className="text-gray-700 hover:text-[#2563EB] text-sm font-medium transition-colors duration-150"
               >
@@ -63,7 +63,7 @@ export function Header() {
           <a
             href="#contacts"
             className="hidden md:inline-flex items-center justify-center rounded-[59px] bg-[#2563EB] text-sm font-semibold text-white hover:bg-blue-700 transition-colors duration-150 shrink-0"
-            style={{ width: '180px', height: '54px' }}
+            style={{ width: '180px', height: '42px' }}
           >
             Записаться
           </a>

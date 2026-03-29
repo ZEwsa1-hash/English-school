@@ -7,7 +7,7 @@ import { Footer } from '@/components/layout/Footer'
 const inter = Inter({ subsets: ['latin', 'cyrillic'], display: 'swap' })
 
 // TODO: set via NEXT_PUBLIC_SITE_URL env variable before deploying to production
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://english-school.websitedev.cloud'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

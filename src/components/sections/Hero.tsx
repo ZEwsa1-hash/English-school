@@ -1,6 +1,41 @@
+'use client'
+
+import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
+
+const LINE1 = 'Онлайн-обучение'
+const LINE2 = 'по английскому языку'
+const CHAR_DELAY_MS = 55
 
 export function Hero() {
+  const [line1, setLine1] = useState('')
+  const [line2, setLine2] = useState('')
+  const [doneTyping, setDoneTyping] = useState(false)
+
+  useEffect(() => {
+    let i = 0
+    const t1 = setInterval(() => {
+      i++
+      setLine1(LINE1.slice(0, i))
+      if (i >= LINE1.length) {
+        clearInterval(t1)
+        let j = 0
+        const t2 = setInterval(() => {
+          j++
+          setLine2(LINE2.slice(0, j))
+          if (j >= LINE2.length) {
+            clearInterval(t2)
+            setDoneTyping(true)
+          }
+        }, CHAR_DELAY_MS)
+      }
+    }, CHAR_DELAY_MS)
+    return () => clearInterval(t1)
+  }, [])
+
+  const isTypingLine2 = line1.length >= LINE1.length && !doneTyping
+
   return (
     <section className="relative w-full overflow-hidden bg-white px-4 sm:px-10 lg:px-20">
       {/* Wave background — right half */}
@@ -14,14 +49,31 @@ export function Hero() {
         priority
       />
 
-      {/* Same structure as header: px-20 on outer, max-w inside */}
-      <div className="relative z-10 max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 pt-[110px] lg:pt-[150px] pb-16 lg:pb-20">
+      <div className="relative z-10 max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 pt-[125px] lg:pt-[150px] pb-16 lg:pb-20">
 
         {/* Left: text */}
         <div className="flex-1 max-w-[738px] flex flex-col items-center lg:items-start" style={{ marginTop: '35px' }}>
           <h1 className="text-black font-extrabold text-[30px] lg:text-[64px] leading-[100%] lg:leading-tight text-center lg:text-left">
-            <span className="block">Онлайн-обучение</span>
-            <span className="block">по английскому языку</span>
+            <span className="block">
+              {line1}
+              {!isTypingLine2 && !doneTyping && (
+                <motion.span
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
+                  aria-hidden="true"
+                >|</motion.span>
+              )}
+            </span>
+            <span className="block">
+              {line2}
+              {(isTypingLine2 || doneTyping) && (
+                <motion.span
+                  animate={doneTyping ? { opacity: 0 } : { opacity: [1, 0] }}
+                  transition={doneTyping ? { duration: 0.4, delay: 0.8 } : { duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
+                  aria-hidden="true"
+                >|</motion.span>
+              )}
+            </span>
           </h1>
           <p className="mt-4 text-zinc-600 text-[16px] lg:text-lg leading-[100%] text-center lg:text-left">
             Освоите уникальную методику, которая поможет освоить язык в перерывах между работой и личной жизнью
@@ -47,15 +99,20 @@ export function Hero() {
 
             {/* Ice cube — overlapping N, 15px gap from N */}
             <div className="relative" style={{ marginLeft: '-160px' }}>
-              <Image
-                src="/ice-cube.png"
-                alt="Ice cube"
-                width={540}
-                height={540}
-                className="object-contain"
-                priority
-              />
-              {/* Dot — 20px left, 30px below center */}
+              <motion.div
+                animate={{ y: [0, -14, 0] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <Image
+                  src="/ice-cube.png"
+                  alt="Ice cube"
+                  width={540}
+                  height={540}
+                  className="object-contain"
+                  priority
+                />
+              </motion.div>
+              {/* Dot — stays fixed, does not animate */}
               <div className="absolute w-6 h-6 rounded-full bg-black" style={{ top: 'calc(50% + 30px)', right: '64px' }} />
             </div>
           </div>

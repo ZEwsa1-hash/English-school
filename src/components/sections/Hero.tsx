@@ -14,6 +14,14 @@ export function Hero() {
   const [doneTyping, setDoneTyping] = useState(false)
 
   useEffect(() => {
+    // On mobile (< 1024px) show text immediately without animation
+    if (window.innerWidth < 1024) {
+      setLine1(LINE1)
+      setLine2(LINE2)
+      setDoneTyping(true)
+      return
+    }
+
     let i = 0
     const t1 = setInterval(() => {
       i++

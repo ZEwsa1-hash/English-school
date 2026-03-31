@@ -132,13 +132,13 @@ function BenefitsMobileCarousel() {
       style={{ height: `${N * 150}vh`, position: 'relative' }}
     >
       <div
-        className="sticky top-0 flex flex-col justify-center items-center px-5 md:px-20 lg:px-32"
+        className="sticky top-0 flex flex-col justify-start pt-20 md:justify-center md:pt-0 items-center px-5 md:px-20 lg:px-32"
         style={{ height: '100vh' }}
       >
         <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black text-center w-full mb-12">
           Благодаря английскому вы...
         </h2>
-        <div style={{ position: 'relative', width: '100%', maxWidth: 860, marginTop: 90 }}>
+        <div style={{ position: 'relative', width: '100%', maxWidth: 860 }} className="mt-16 md:mt-[90px]">
           {BENEFITS.map((benefit, i) => (
             <BenefitBlurSlide
               key={benefit.id}

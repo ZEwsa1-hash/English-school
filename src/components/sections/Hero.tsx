@@ -52,7 +52,7 @@ export function Hero() {
         alt=""
         width={860}
         height={860}
-        className="absolute right-0 top-0 h-full w-auto pointer-events-none select-none"
+        className="absolute right-0 top-0 h-[80%] lg:h-full w-auto pointer-events-none select-none"
         aria-hidden="true"
         priority
       />

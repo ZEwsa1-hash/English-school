@@ -95,19 +95,19 @@ export function Features() {
             {line2}{cursor(isTypingLine2 || doneTyping)}
           </span>
         </h2>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="flex flex-col items-center gap-3">
           {FEATURE_CARDS.map((card) => (
             <div
               key={card.title}
-              className="relative bg-white rounded-[28px] overflow-hidden"
-              style={{ height: 170 }}
+              className="relative bg-white"
+              style={{ width: 280, height: 327, borderRadius: 40, overflow: 'hidden' }}
             >
               <Image
                 src={card.image}
                 alt={card.title}
                 fill
-                style={{ objectFit: card.mobileImageFit ?? 'cover', objectPosition: card.mobileImagePosition ?? 'center center' }}
-                sizes="(max-width: 640px) 45vw, 400px"
+                style={{ objectFit: 'contain', objectPosition: card.mobileImagePosition ?? 'center center' }}
+                sizes="280px"
               />
             </div>
           ))}

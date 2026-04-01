@@ -31,7 +31,7 @@ function ReviewCard({ review }: ReviewCardProps) {
     <div
       className="bg-white p-6 flex flex-col gap-4"
       style={{
-        minHeight: '271px',
+        height: '271px',
         borderRadius: '20px',
         boxShadow: '0px 4px 17px 0px #00000040',
       }}
@@ -64,8 +64,7 @@ export function Reviews() {
   const [activeIndex, setActiveIndex] = useState(0)
   const pointerStartX = useRef<number | null>(null)
 
-  // On desktop show all 3 at once (single "page"), on mobile paginate one by one
-  const totalMobilePages = REVIEWS.length
+  const totalPages = REVIEWS.length
 
   function handlePointerDown(e: React.PointerEvent) {
     pointerStartX.current = e.clientX
@@ -76,13 +75,8 @@ export function Reviews() {
     const delta = e.clientX - pointerStartX.current
     pointerStartX.current = null
     if (Math.abs(delta) < 30) return
-    if (delta > 0) {
-      // Swipe right → previous
-      setActiveIndex((prev) => (prev - 1 + totalMobilePages) % totalMobilePages)
-    } else {
-      // Swipe left → next
-      setActiveIndex((prev) => (prev + 1) % totalMobilePages)
-    }
+    if (delta > 0) setActiveIndex((i) => (i - 1 + totalPages) % totalPages)
+    else setActiveIndex((i) => (i + 1) % totalPages)
   }
 
   function handlePointerCancel() {
@@ -103,7 +97,15 @@ export function Reviews() {
           ))}
         </div>
 
-        {/* Mobile / tablet: single card carousel */}
+        {/* Desktop pagination dots (decorative) */}
+        <div className="hidden lg:flex items-center justify-center gap-2 mt-8">
+          <div className="w-12 h-1.5 rounded-md bg-gray-400" />
+          <div className="w-4 h-1.5 rounded-md bg-gray-300" />
+          <div className="w-4 h-1.5 rounded-md bg-gray-300" />
+          <div className="w-4 h-1.5 rounded-md bg-gray-300" />
+        </div>
+
+        {/* Mobile / tablet: swipe carousel */}
         <div
           className="lg:hidden"
           onPointerDown={handlePointerDown}
@@ -112,10 +114,8 @@ export function Reviews() {
           style={{ touchAction: 'pan-y', userSelect: 'none' }}
         >
           <ReviewCard review={REVIEWS[activeIndex]} />
-
-          {/* Pagination dots */}
           <div className="flex items-center justify-center gap-2 mt-6">
-            {[...Array(totalMobilePages)].map((_, i) => (
+            {[...Array(totalPages)].map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
@@ -126,14 +126,6 @@ export function Reviews() {
               />
             ))}
           </div>
-        </div>
-
-        {/* Desktop pagination dots (decorative) */}
-        <div className="hidden lg:flex items-center justify-center gap-2 mt-8">
-          <div className="w-12 h-1.5 rounded-md bg-gray-400" />
-          <div className="w-4 h-1.5 rounded-md bg-gray-300" />
-          <div className="w-4 h-1.5 rounded-md bg-gray-300" />
-          <div className="w-4 h-1.5 rounded-md bg-gray-300" />
         </div>
       </div>
     </section>

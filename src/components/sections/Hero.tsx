@@ -52,16 +52,16 @@ export function Hero() {
         alt=""
         width={860}
         height={860}
-        className="absolute right-0 top-0 h-[80%] lg:h-full w-auto pointer-events-none select-none"
+        className="absolute -right-[50px] top-0 lg:right-0 lg:top-0 h-[50%] lg:h-full w-auto pointer-events-none select-none"
         aria-hidden="true"
         priority
       />
 
-      <div className="relative z-10 max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 pt-[125px] lg:pt-[150px] pb-16 lg:pb-20">
+      <div className="relative z-10 max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8 pt-[100px] lg:pt-[150px] pb-8 lg:pb-20">
 
-        {/* Left: text */}
-        <div className="flex-1 max-w-[738px] flex flex-col items-center lg:items-start" style={{ marginTop: '35px' }}>
-          <h1 className="text-black font-extrabold text-[30px] lg:text-[64px] leading-[100%] lg:leading-tight text-center lg:text-left">
+        {/* Left: heading + description (+ button on desktop) */}
+        <div className="order-1 flex-1 max-w-[738px] flex flex-col items-center lg:items-start mt-[60px] lg:-mt-5">
+          <h1 className="text-black font-extrabold text-[26px] lg:text-[62px] leading-[110%] lg:leading-tight text-center lg:text-left translate-y-[15px] lg:translate-y-0">
             <span className="block">
               {line1}
               {!isTypingLine2 && !doneTyping && (
@@ -72,7 +72,7 @@ export function Hero() {
                 >|</motion.span>
               )}
             </span>
-            <span className="block">
+            <span className="block lg:whitespace-nowrap">
               {line2}
               {(isTypingLine2 || doneTyping) && (
                 <motion.span
@@ -83,30 +83,31 @@ export function Hero() {
               )}
             </span>
           </h1>
-          <p className="mt-4 text-zinc-600 text-[16px] lg:text-lg leading-[100%] text-center lg:text-left">
+          <p className="mt-[41px] lg:mt-4 translate-y-[25px] lg:translate-y-0 text-zinc-600 text-[16px] lg:text-lg leading-[100%] text-center lg:text-left">
             Освоите уникальную методику, которая поможет освоить язык в перерывах между работой и личной жизнью
           </p>
+          {/* Button visible only on desktop */}
           <a
             href="#courses"
-            className="mt-10 inline-flex items-center justify-center bg-[#E85623] text-white font-semibold text-base rounded-[59px] hover:bg-[#d04e1f] transition-colors duration-200 w-full max-w-[342px] lg:w-[187px]"
+            className="hidden lg:inline-flex mt-10 items-center justify-center bg-[#E85623] text-white font-semibold text-base rounded-[59px] hover:bg-[#d04e1f] transition-colors duration-200 w-[187px]"
             style={{ height: '60px' }}
           >
             Узнать цены
           </a>
         </div>
 
-        {/* Right: N + ice cube (horizontal), dot below-left of ice cube */}
-        <div className="hidden md:flex flex-1 items-center justify-center md:max-w-[300px] lg:max-w-none" style={{ paddingLeft: '20px', marginTop: '-60px' }}>
+        {/* Right: N + ice cube — order 2 on mobile */}
+        <div className="order-2 flex w-full items-center justify-center lg:flex-1 lg:max-w-none" style={{ marginTop: '-10px' }}>
           <div className="relative flex items-center">
             {/* N */}
             <span
-              className="text-black select-none leading-none shrink-0 z-10 font-extrabold text-[128px]"
+              className="text-black select-none leading-none shrink-0 z-10 font-extrabold text-[72px] lg:text-[128px] lg:ml-[35px]"
             >
               N
             </span>
 
-            {/* Ice cube — overlapping N, 15px gap from N */}
-            <div className="relative" style={{ marginLeft: '-160px' }}>
+            {/* Ice cube — overlapping N */}
+            <div className="relative -ml-[80px] lg:-ml-[170px]">
               <motion.div
                 animate={{ y: [0, -14, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
@@ -116,15 +117,24 @@ export function Hero() {
                   alt="Ice cube"
                   width={540}
                   height={540}
-                  className="object-contain"
+                  className="w-[260px] h-[260px] lg:w-[540px] lg:h-[540px] object-contain"
                   priority
                 />
               </motion.div>
               {/* Dot — stays fixed, does not animate */}
-              <div className="absolute w-6 h-6 rounded-full bg-black" style={{ top: 'calc(50% + 30px)', right: '64px' }} />
+              <div className="absolute w-4 h-4 lg:w-6 lg:h-6 rounded-full bg-black top-[calc(50%+12px)] right-8 lg:top-[calc(50%+30px)] lg:right-16" />
             </div>
           </div>
         </div>
+
+        {/* Button visible only on mobile — order 3 (below N+ice) */}
+        <a
+          href="#courses"
+          className="order-3 lg:hidden inline-flex items-center justify-center bg-[#E85623] text-white font-semibold text-base rounded-[59px] hover:bg-[#d04e1f] transition-colors duration-200 w-full max-w-[342px] -mt-[15px]"
+          style={{ height: '60px' }}
+        >
+          Узнать цены
+        </a>
 
       </div>
     </section>

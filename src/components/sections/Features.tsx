@@ -11,7 +11,10 @@ interface FeatureCard {
   mobileImagePosition?: string
 }
 
-const CARD_H = 327
+const CARD_H = 352
+
+// Cascade top-offsets for desktop (px): left card lowest, 3rd highest, 4th slightly drops
+const CARD_TOP_OFFSETS = [120, 75, 15, 50]
 
 const FEATURE_CARDS: FeatureCard[] = [
   { image: '/frame-5.png',  title: 'Онлайн-учебник',       mobileImageFit: 'contain', mobileImagePosition: 'right center' },
@@ -114,19 +117,26 @@ export function Features() {
         </div>
       </div>
 
-      {/* Desktop layout — 4-column CSS grid */}
+      {/* Desktop layout — cascade staircase */}
       <div className="hidden lg:block">
-        <div className="mx-auto w-full max-w-[1280px] bg-[#3794FE] rounded-[50px] pt-14 pb-12 px-10">
+        <div className="mx-auto w-full max-w-[1280px] bg-[#3794FE] rounded-[50px] pt-14 px-10 overflow-hidden" style={{ height: 716 }}>
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-10 leading-snug">
-            {line1}{!isTypingLine2 && !doneTyping ? cursor(true) : ' '}
-            {line2}{cursor(isTypingLine2 || doneTyping)}
+            <span className="block">
+              {line1}{cursor(!isTypingLine2 && !doneTyping)}
+            </span>
+            <span className="block">
+              {line2}{cursor(isTypingLine2 || doneTyping)}
+            </span>
           </h2>
-          <div className="grid grid-cols-4 gap-5 justify-items-center">
-            {FEATURE_CARDS.map((card) => (
+          <div className="flex gap-5 items-start">
+            {FEATURE_CARDS.map((card, i) => (
               <div
                 key={card.title}
-                className="relative bg-white overflow-hidden w-full rounded-[40px]"
-                style={{ height: CARD_H }}
+                className="relative bg-white flex-1 rounded-[40px] overflow-hidden shrink-0"
+                style={{
+                  height: CARD_H,
+                  marginTop: CARD_TOP_OFFSETS[i],
+                }}
               >
                 <Image
                   src={card.image}

@@ -123,7 +123,7 @@ export function ContactSection() {
 
   return (
     <section id="contacts" className="bg-white py-20 px-4 sm:px-8 lg:px-20">
-      <div className="max-w-[800px] mx-auto flex flex-col items-center gap-8">
+      <div className="w-full max-w-[800px] mx-auto flex flex-col items-center gap-8">
         <div className="text-center">
           <h2 className="text-[30px] md:text-5xl font-extrabold leading-[92%] text-center text-black">
             Остались вопросы?
@@ -157,7 +157,7 @@ export function ContactSection() {
         {step === 'contact' && (
           <form onSubmit={handleContactSubmit} className="w-full flex flex-col gap-2">
             <div
-              className="flex items-center w-full bg-white rounded-[40px] px-3 sm:px-5 py-3"
+              className="flex items-center w-full bg-white rounded-[40px] pl-[37px] pr-2 md:pl-10 md:pr-3 py-3"
               style={{ boxShadow: 'inset 0 4px 11.9px 0 rgba(0,0,0,0.25)' }}
             >
               <input
@@ -165,11 +165,11 @@ export function ContactSection() {
                 value={contact}
                 onChange={handleContactChange}
                 placeholder={getPlaceholder(selected)}
-                className="flex-1 bg-transparent outline-none text-xs text-gray-700 placeholder:text-gray-400 py-1"
+                className="flex-1 bg-transparent outline-none text-[11px] lg:text-base text-gray-700 placeholder:text-gray-400 py-1"
               />
               <button
                 type="submit"
-                className={`ml-2 sm:ml-4 shrink-0 text-white text-xs sm:text-sm font-semibold rounded-full px-4 sm:px-7 py-3 transition-colors duration-150 ${
+                className={`ml-3 shrink-0 text-white text-[11px] lg:text-base font-semibold rounded-full px-5 md:px-10 py-3 transition-colors duration-150 ${
                   canSubmitContact ? 'bg-[#2563EB] hover:bg-blue-700' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               >
@@ -189,7 +189,7 @@ export function ContactSection() {
         {step === 'question' && (
           <form onSubmit={handleQuestionSubmit} className="w-full flex flex-col gap-2">
             <div
-              className="flex items-center w-full bg-white rounded-[40px] px-3 sm:px-5 py-3"
+              className="flex items-center w-full bg-white rounded-[40px] pl-[37px] pr-2 md:pl-10 md:pr-3 py-3"
               style={{ boxShadow: 'inset 0 4px 11.9px 0 rgba(0,0,0,0.25)' }}
             >
               <input
@@ -198,12 +198,12 @@ export function ContactSection() {
                 onChange={(e) => { setQuestion(e.target.value); setSubmitError(null) }}
                 placeholder="Напишите свой вопрос..."
                 autoFocus
-                className="flex-1 bg-transparent outline-none text-xs text-gray-700 placeholder:text-gray-400 py-1"
+                className="flex-1 bg-transparent outline-none text-[11px] lg:text-base text-gray-700 placeholder:text-gray-400 py-1"
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`ml-4 shrink-0 text-white text-sm font-semibold rounded-full px-7 py-3 transition-colors duration-150 ${
+                className={`ml-3 shrink-0 text-white text-[11px] lg:text-base font-semibold rounded-full px-5 md:px-10 py-3 transition-colors duration-150 ${
                   canSubmitQuestion && !isSubmitting ? 'bg-[#2563EB] hover:bg-blue-700' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               >

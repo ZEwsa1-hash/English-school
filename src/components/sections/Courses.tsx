@@ -52,7 +52,6 @@ export function Courses() {
               className="object-cover"
             />
             {/* Gradient overlay */}
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.55) 0%, transparent 50%)' }} />
             <div className="absolute top-0 left-0 right-0 p-5 flex items-start justify-between">
               <h3 className="text-white font-bold text-base leading-tight max-w-[200px]">Курсы общего английского</h3>
               <span className="text-white/80 text-sm shrink-0">5$ занятие</span>
@@ -68,7 +67,6 @@ export function Courses() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.55) 0%, transparent 50%)' }} />
             <div className="absolute top-0 left-0 right-0 p-5 flex items-start justify-between">
               <h3 className="text-white font-bold text-base leading-tight max-w-[200px]">Английский для переезда за границу</h3>
               <span className="text-white/80 text-sm shrink-0">5$ занятие</span>
@@ -103,7 +101,6 @@ export function Courses() {
               quality={100}
               sizes="(min-width: 768px) 50vw"
             />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 55%)' }} />
             <div className="absolute top-0 left-0 right-0 p-5 flex items-start justify-between">
               <h3 className="text-white font-bold text-base leading-tight max-w-[240px]">Курсы общего английского</h3>
               <span className="text-white/80 text-sm shrink-0">5$ занятие</span>
@@ -123,7 +120,6 @@ export function Courses() {
               quality={100}
               sizes="(min-width: 768px) 25vw"
             />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 45%)' }} />
             <div className="absolute top-0 left-0 right-0 p-5">
               <h3 className="text-white font-bold text-base leading-tight mb-2">Английский для переезда за границу</h3>
               <span className="text-white/80 text-sm">5$ занятие</span>

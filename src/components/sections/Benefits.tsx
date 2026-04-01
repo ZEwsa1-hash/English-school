@@ -78,14 +78,14 @@ function BenefitBlurSlide({
       <div
         className="bg-[#F04E23] text-white px-5 md:px-8 text-center w-full"
         style={{
-          height: 68,
+          height: 90,
           borderRadius: 59,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           fontFamily: 'Inter, sans-serif',
-          fontWeight: 600,
-          fontSize: 'clamp(13px, 1.1vw, 16px)',
+          fontWeight: 700,
+          fontSize: 'clamp(15px, 1.3vw, 18px)',
           lineHeight: '120%',
           letterSpacing: 0,
         }}
@@ -138,7 +138,7 @@ function BenefitsMobileCarousel() {
         <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black text-center w-full mb-12">
           Благодаря английскому вы...
         </h2>
-        <div style={{ position: 'relative', width: '100%', maxWidth: 860 }} className="mt-16 md:mt-[90px]">
+        <div style={{ position: 'relative', width: '100%', maxWidth: 694 }} className="mt-16 md:mt-[90px]">
           {BENEFITS.map((benefit, i) => (
             <BenefitBlurSlide
               key={benefit.id}

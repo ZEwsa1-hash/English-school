@@ -18,7 +18,7 @@ export function Header() {
   }
 
   return (
-    <header className="md:fixed md:top-0 md:left-0 md:right-0 md:z-50 pt-[28px] md:pt-[22px] px-5 sm:px-8 lg:px-20">
+    <header className="fixed top-0 left-0 right-0 z-50 pt-[28px] md:pt-[22px] px-5 sm:px-8 lg:px-20">
       {/* Pill — max 1280px, height 48px, radius 59px, bg #E3E3E3 */}
       <div className="max-w-[1280px] mx-auto">
         <div className="relative bg-white/95 md:bg-[#E3E3E3] rounded-[59px] md:rounded-[59px] h-[48px] flex items-center justify-between pr-1 shadow-sm md:shadow-none">
